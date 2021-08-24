@@ -531,6 +531,21 @@ def call(Map paramsMap) {
                             }
                         }
                     }
+		    stage('CI: Hello World!') {
+                       steps {
+                           container("${WORKFLOW_WORKER_NAME_DEFAULT}") {
+                               sh """
+                                   if [ "${params.verbose}" == "true" ]; then set -x; else set +x; fi
+                                   set -eu -o pipefail
+ 
+                                   source ${WORKFLOW_WORKER_VENV_PATH}/bin/activate
+                                   psr \
+                                       --config ${PSR_CONFIG_ARG} \
+                                       --step hello-world
+                               """
+                           }
+                       }
+                   }
                     stage('CI: Tag Source Code') {
                         steps {
                             container("${WORKFLOW_WORKER_NAME_DEFAULT}") {
