@@ -531,7 +531,7 @@ def call(Map paramsMap) {
                             }
                         }
                     }
-		    stage('CI: Hello World!') {
+		            stage('CI: Hello World!') {
                        steps {
                            container("${WORKFLOW_WORKER_NAME_DEFAULT}") {
                                sh """
@@ -545,7 +545,7 @@ def call(Map paramsMap) {
                                """
                            }
                        }
-                   }
+                    }
                     stage('CI: Tag Source Code') {
                         steps {
                             container("${WORKFLOW_WORKER_NAME_DEFAULT}") {
